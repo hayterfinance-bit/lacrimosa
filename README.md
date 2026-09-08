@@ -40,7 +40,7 @@ Safari play it); the download should be H.264 with 24-bit PCM in MOV.
 ## Measured block
 
 The figures under "Measured" come from the master's spec sheet. When the
-master changes, regenerate the rows and push:
+master changes, rebuild the rows and push:
 
 ```
 python measured.py ../MASTER_SPEC.json
