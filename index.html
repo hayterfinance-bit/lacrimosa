@@ -3,134 +3,182 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HAYTERWAVE — LACRIMOSA</title>
-<meta name="description" content="Mozart — Lacrimosa, reimagined as tech house. 128 BPM · 3′33″. A film by HAYTERWAVE.">
+<title>Hayterwave — Lacrimosa</title>
+<meta name="description" content="Mozart — Lacrimosa, reimagined as tech house. 128 BPM · 3′33″. A film by Hayterwave.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0a0a0d">
 <link rel="canonical" href="https://hayterfinance-bit.github.io/lacrimosa/">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="HAYTERWAVE">
+<meta property="og:site_name" content="Hayterwave">
 <meta property="og:url" content="https://hayterfinance-bit.github.io/lacrimosa/">
-<meta property="og:title" content="HAYTERWAVE — LACRIMOSA">
+<meta property="og:title" content="Hayterwave — Lacrimosa">
 <meta property="og:description" content="Mozart's Lacrimosa reimagined as tech house at 128 BPM — a gothic cathedral built around the music. Screening 15 September at the Tech House Market pro-feedback stream with CASHEW.">
 <meta property="og:image" content="https://hayterfinance-bit.github.io/lacrimosa/assets/og_lacrimosa.jpg">
 <meta property="og:image:secure_url" content="https://hayterfinance-bit.github.io/lacrimosa/assets/og_lacrimosa.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="HAYTERWAVE — LACRIMOSA · QUAM OLIM. The nave of the cathedral, organ pipes above the choir.">
+<meta property="og:image:alt" content="Hayterwave — Lacrimosa · Quam Olim. The nave of the cathedral, organ pipes above the choir.">
 <meta property="og:locale" content="en_US">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HAYTERWAVE — LACRIMOSA">
+<meta name="twitter:title" content="Hayterwave — Lacrimosa">
 <meta name="twitter:description" content="Mozart's Lacrimosa reimagined as tech house at 128 BPM — a gothic cathedral built around the music. Screening 15 September at the Tech House Market pro-feedback stream with CASHEW.">
 <meta name="twitter:image" content="https://hayterfinance-bit.github.io/lacrimosa/assets/og_lacrimosa.jpg">
-<meta name="twitter:image:alt" content="HAYTERWAVE — LACRIMOSA · QUAM OLIM">
+<meta name="twitter:image:alt" content="Hayterwave — Lacrimosa · Quam Olim">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0d'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' text-anchor='middle' fill='%23c8bca0'%3EL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 
 <style>
   :root {
     --ground: #0a0a0d; --rule: #232328;
     --ink: #e9e4d8; --ink-2: #a9a49a; --ink-3: #6d6a64; --bone: #c8bca0;
     --serif: "Cormorant Garamond", "EB Garamond", Garamond, "Times New Roman", Georgia, serif;
+    /* type scale: display 44 / text 19 / label 13 (small caps) */
+    --display: 44px; --text: 19px; --label: 13px;
   }
   * { box-sizing: border-box; }
   html { background: var(--ground); -webkit-text-size-adjust: 100%; }
-  body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.5; overflow-x: hidden; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--serif); font-size: var(--text); line-height: 1.5; overflow-x: hidden; }
   a { color: var(--bone); text-decoration: none; border-bottom: 1px solid var(--rule); }
   a:hover { border-bottom-color: var(--bone); }
+  .label { font-size: var(--label); letter-spacing: .3em; text-transform: uppercase; line-height: 1.5; }
 
-  /* the player: the whole first screen */
-  .stage { position: relative; height: 100vh; height: 100svh; background: #000; display: flex; align-items: center; justify-content: center; }
-  .stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
-  .stage video::-webkit-media-controls { display: none !important; }
-  .stage.playing video::-webkit-media-controls { display: flex !important; }
-  .start { position: relative; z-index: 1; border: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; text-align: center; padding: 24px; }
-  .start:focus-visible { outline: 1px solid var(--bone); outline-offset: 12px; }
-  .glyph { width: 72px; height: 72px; margin: 0 auto; display: block; }
-  .glyph circle { fill: none; stroke: var(--ink); stroke-width: 1; opacity: .7; }
-  .glyph path { fill: var(--ink); }
-  .start .title { display: block; margin-top: 26px; font-size: 15px; letter-spacing: .34em; text-transform: uppercase; color: var(--ink); }
-  .start .state { display: block; margin-top: 10px; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-3); }
-  .stage.rendering .glyph { opacity: .35; }
-  .stage.rendering .start { cursor: default; }
-  .stage.playing .start { display: none; }
+  /* ---- stage: exactly one viewport, black ---- */
+  .stage { position: relative; height: 100vh; height: 100svh; background: var(--ground); overflow: hidden; }
+  .stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--ground); }
+  .stage:not(.playing) video::-webkit-media-controls { display: none !important; }
+  .stage:not(.playing) video::-webkit-media-controls-enclosure { display: none !important; }
 
-  /* one-sheet */
-  .sheet { max-width: 640px; margin: 0 auto; padding: 64px 22px 56px; }
-  .warn { font-size: 14px; letter-spacing: .04em; color: var(--ink-2); margin: 0 0 40px; padding-left: 12px; border-left: 1px solid var(--bone); }
-  .artist { margin: 0; font-size: 13px; letter-spacing: .32em; text-transform: uppercase; color: var(--bone); }
-  h1 { margin: 6px 0 0; font-weight: 500; font-size: clamp(34px, 7vw, 46px); letter-spacing: .08em; line-height: 1.05; }
-  .desc { margin: 18px 0 0; color: var(--ink-2); font-size: 19px; }
-  .facts { margin: 22px 0 0; padding: 14px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 14px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); display: flex; flex-wrap: wrap; gap: 6px 22px; }
-  h2 { margin: 44px 0 14px; font-size: 12px; letter-spacing: .28em; text-transform: uppercase; font-weight: 500; color: var(--ink-3); }
+  .play {
+    position: absolute; left: 50%; top: 50%; width: 96px; height: 96px; margin: -48px 0 0 -48px;
+    padding: 0; border: 0; background: transparent; cursor: pointer; color: var(--ink); opacity: .78;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .play svg { display: block; width: 96px; height: 96px; }
+  .play circle { fill: none; stroke: currentColor; stroke-width: 1.5; }
+  .play path { fill: currentColor; }
+  .play:hover, .play:focus-visible { opacity: 1; transform: scale(1.03); outline: 0; }
+  .stage.rendering .play { opacity: .32; cursor: default; }
+  .stage.rendering .play:hover { opacity: .32; transform: none; }
+  .stage.playing .play, .stage.playing .lockup { display: none; }
+
+  .lockup { position: absolute; left: 0; right: 0; bottom: 9%; text-align: center; padding: 0 20px; pointer-events: none; }
+  .lockup .name { color: var(--ink); margin: 0; }
+  .lockup .state { color: var(--ink-3); margin: 6px 0 0; letter-spacing: .22em; }
+  .lockup-below { display: none; text-align: center; padding: 40px 20px 0; }
+  .lockup-below .name { color: var(--ink); margin: 0; }
+  .lockup-below .state { color: var(--ink-3); margin: 6px 0 0; letter-spacing: .22em; }
+  @media (max-height: 620px) {
+    .stage .lockup { display: none; }
+    .lockup-below { display: block; }
+  }
+
+  /* ---- one-sheet ---- */
+  .sheet { max-width: 620px; margin: 0 auto; padding: 96px 22px 64px; }
+  .warn { color: var(--ink-2); margin: 0 0 48px; padding-left: 14px; border-left: 1px solid var(--bone); line-height: 1.45; }
+  .artist { color: var(--bone); margin: 0; }
+  h1 { margin: 8px 0 0; font-weight: 500; font-size: var(--display); letter-spacing: .06em; line-height: 1.1; }
+  .desc { margin: 20px 0 0; color: var(--ink-2); line-height: 1.5; }
+  .facts { margin: 26px 0 0; padding: 14px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); color: var(--ink); display: flex; flex-wrap: wrap; gap: 8px 26px; letter-spacing: .2em; }
+  h2 { margin: 52px 0 16px; font-weight: 500; color: var(--ink-3); }
   .credits { margin: 0; }
-  .credits div { display: grid; grid-template-columns: 1fr; gap: 2px 22px; padding: 10px 0; border-top: 1px solid var(--rule); font-size: 17px; }
+  .credits div { display: grid; grid-template-columns: 1fr; gap: 4px 24px; padding: 12px 0; border-top: 1px solid var(--rule); line-height: 1.45; }
   .credits div:last-child { border-bottom: 1px solid var(--rule); }
-  .credits dt { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-3); padding-top: 3px; }
+  .credits dt { color: var(--ink-3); padding-top: 5px; }
   .credits dd { margin: 0; }
-  .credits em, .note em { color: var(--ink-2); }
-  @media (min-width: 520px) { .credits div { grid-template-columns: 130px 1fr; } }
-  .note p { margin: 0 0 10px; color: var(--ink-2); font-size: 17px; }
-  .contact p { margin: 0 0 6px; color: var(--ink-2); }
-  .contact a { font-size: clamp(19px, 4vw, 24px); border-bottom-color: var(--bone); word-break: break-all; }
-  .screening { margin: 34px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+  em { color: var(--ink-2); }
+  @media (min-width: 560px) { .credits div { grid-template-columns: 132px 1fr; } }
+  .measured { margin: 0; letter-spacing: .18em; }
+  .measured div { display: grid; grid-template-columns: 1fr auto; gap: 0 24px; padding: 9px 0; border-top: 1px solid var(--rule); }
+  .measured div:last-child { border-bottom: 1px solid var(--rule); }
+  .measured dt { color: var(--ink-3); }
+  .measured dd { margin: 0; color: var(--ink); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .measured-note { margin: 12px 0 0; color: var(--ink-3); }
+  .note p { margin: 0 0 12px; color: var(--ink-2); line-height: 1.5; }
+  .contact p { margin: 0 0 8px; color: var(--ink-2); }
+  .contact a { border-bottom-color: var(--bone); word-break: break-all; }
+  .screening { margin: 44px 0 0; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--ink-2); line-height: 1.5; }
   .screening b { font-weight: 500; color: var(--bone); }
-  footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: 13px; letter-spacing: .06em; }
-  footer p { margin: 0 0 6px; }
-  footer .brand { color: var(--ink-2); letter-spacing: .22em; text-transform: uppercase; }
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--rule); color: var(--ink-3); line-height: 1.5; }
+  footer p { margin: 0 0 8px; }
+  footer .brand { color: var(--ink-2); }
+
+  @media (max-width: 420px) { :root { --display: 38px; --text: 18px; } .lockup .name, .lockup-below .name { letter-spacing: .22em; } }
 </style>
 </head>
 <body>
 
 <div class="stage rendering" id="stage">
-  <video id="film" playsinline preload="none" poster="assets/poster.jpg" aria-label="HAYTERWAVE — LACRIMOSA"></video>
-  <button class="start" id="start" type="button" aria-label="Play">
-    <svg class="glyph" viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="35"/><path d="M29 23v26l21-13z"/></svg>
-    <span class="title">HAYTERWAVE — LACRIMOSA</span>
-    <span class="state" id="state">Rendering · 1080p</span>
+  <video id="film" playsinline preload="none" poster="assets/poster.jpg" aria-label="Hayterwave — Lacrimosa"></video>
+  <button class="play" id="play" type="button" aria-label="Play">
+    <svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="47"/><path d="M39 31v34l28-17z"/></svg>
   </button>
+  <div class="lockup" aria-hidden="true">
+    <p class="label name">Hayterwave — Lacrimosa</p>
+    <p class="label state" data-state>Rendering · 1080p</p>
+  </div>
+</div>
+<div class="lockup-below">
+  <p class="label name">Hayterwave — Lacrimosa</p>
+  <p class="label state" data-state>Rendering · 1080p</p>
 </div>
 
 <main class="sheet">
   <p class="warn">Contains flashing lights, lightning and rapid high-contrast motion.</p>
 
-  <p class="artist">HAYTERWAVE</p>
-  <h1>LACRIMOSA</h1>
+  <p class="label artist">Hayterwave</p>
+  <h1>Lacrimosa</h1>
   <p class="desc">Mozart — <em>Lacrimosa</em>, reimagined as tech house. A gothic cathedral, built around the music.</p>
-  <div class="facts"><span>D minor</span><span>128 BPM</span><span>3′33″</span><span>Film · 1080p</span></div>
+  <div class="facts label" id="facts"><span>D minor</span><span>128 BPM</span><span>3′33″</span><span>Film · 1080p</span></div>
 
-  <h2>Made With</h2>
+  <h2 class="label">Made With</h2>
   <dl class="credits">
-    <div><dt>Music</dt><dd>Wolfgang Amadeus Mozart — Requiem in D minor, K. 626: <em>Lacrimosa</em>, <em>Quam olim Abrahae</em>. Arranged and produced by HAYTERWAVE.</dd></div>
-    <div><dt>Choir</dt><dd>EastWest Hollywood Choirs Diamond — performed in MIDI, phrased with WordBuilder.</dd></div>
-    <div><dt>Piano</dt><dd>Kontakt 7 grand, heavily processed.</dd></div>
-    <div><dt>Drums &amp; Bass</dt><dd>Drums, bass and presets from Tech House Market packs — <em>Modern Tech House Vol. 2</em> leads; Cashew's “Nice Sine” is the sub bass. Some drums tuned with Ableton Corpus.</dd></div>
-    <div><dt>Picture</dt><dd>A 3D gothic cathedral, built around the music. Directed and edited by HAYTERWAVE.</dd></div>
-    <div><dt>Sound</dt><dd>Processed, mixed and mastered by HAYTERWAVE.</dd></div>
+    <div><dt class="label">Music</dt><dd>Wolfgang Amadeus Mozart — Requiem in D minor, K. 626: <em>Lacrimosa</em>, <em>Quam olim Abrahae</em>. Arranged and produced by Hayterwave.</dd></div>
+    <div><dt class="label">Choir</dt><dd>EastWest Hollywood Choirs Diamond — performed in MIDI, phrased with WordBuilder.</dd></div>
+    <div><dt class="label">Piano</dt><dd>Kontakt 7 grand, heavily processed.</dd></div>
+    <div><dt class="label">Drums &amp; Bass</dt><dd>Drums, bass and presets from Tech House Market packs — <em>Modern Tech House Vol. 2</em> leads; Cashew's “Nice Sine” is the sub bass. Some drums tuned with Ableton Corpus.</dd></div>
+    <div><dt class="label">Picture</dt><dd>A 3D gothic cathedral, built around the music. Directed and edited by Hayterwave.</dd></div>
+    <div><dt class="label">Sound</dt><dd>Processed, mixed and mastered by Hayterwave.</dd></div>
   </dl>
 
-  <h2>Quam Olim</h2>
+  <h2 class="label">Measured</h2>
+  <dl class="measured label">
+    <div><dt>Integrated loudness</dt><dd>−9.34 LUFS</dd></div>
+    <div><dt>True peak</dt><dd>−0.29 dBTP</dd></div>
+    <div><dt>Loudness range</dt><dd>4.53 LU</dd></div>
+    <div><dt>Crest factor</dt><dd>9.98 dB</dd></div>
+    <div><dt>Energy below 150 Hz</dt><dd>81.07 %</dd></div>
+    <div><dt>Energy below 60 Hz</dt><dd>42.74 %</dd></div>
+    <div><dt>Sub fundamental</dt><dd>36.80 Hz · D1</dd></div>
+    <div><dt>Kick fundamental</dt><dd>49.92 Hz · G1</dd></div>
+    <div><dt>Sidechain depth</dt><dd>−11.25 dB median</dd></div>
+    <div><dt>Tempo</dt><dd>127.98 BPM · nominal 128</dd></div>
+    <div><dt>Clipped samples</dt><dd>0</dd></div>
+    <div><dt>Format</dt><dd>48 kHz · 24-bit · stereo</dd></div>
+  </dl>
+  <p class="measured-note">Measured on the club master.</p>
+
+  <h2 class="label">Quam Olim</h2>
   <div class="note">
     <p><em>Quam olim Abrahae promisisti, et semini eius</em> — “as once you promised to Abraham and his seed” — is the fugue that closes the Offertorium of Mozart's Requiem; both the <em>Domine Jesu</em> and the <em>Hostias</em> end on it. The film takes its name from that promise.</p>
     <p>The <em>Lacrimosa</em> is the movement Mozart was writing when he died in December 1791. He completed only its first eight bars; Franz Xaver Süssmayr finished it.</p>
   </div>
 
-  <h2>Contact</h2>
+  <h2 class="label">Contact</h2>
   <div class="contact">
     <p>For release, sync and label enquiries.</p>
-    <p><a href="mailto:hayterfinance@gmail.com?subject=LACRIMOSA">hayterfinance@gmail.com</a></p>
+    <p><a href="mailto:hayterfinance@gmail.com?subject=Lacrimosa">hayterfinance@gmail.com</a></p>
   </div>
 
   <p class="screening"><b>Screening 15 · 09 · 2026</b> — Tech House Market pro-feedback stream with CASHEW. Notes on music and picture welcome; nothing is locked.</p>
 
   <footer>
-    <p class="brand">Hayterwave Media LLC</p>
+    <p class="label brand">Hayterwave Media LLC</p>
     <p>Drums, bass and presets from <a href="https://i.refs.cc/e8WpOEVa" rel="noopener">Tech House Market</a> (referral link).</p>
     <p>© 2026 Hayterwave Media LLC. All rights reserved.</p>
   </footer>
@@ -140,9 +188,11 @@
 (function () {
   var stage = document.getElementById('stage');
   var v = document.getElementById('film');
-  var btn = document.getElementById('start');
-  var state = document.getElementById('state');
+  var btn = document.getElementById('play');
+  var states = document.querySelectorAll('[data-state]');
   var film = { mp4: null, mov: null };
+
+  function setState(t) { for (var i = 0; i < states.length; i++) states[i].textContent = t; }
 
   function goFullscreen(el) {
     if (el.requestFullscreen) return el.requestFullscreen().catch(function () {});
@@ -175,13 +225,13 @@
       film = f || film;
       if (film.mp4) {
         stage.classList.remove('rendering');
-        state.textContent = film.mov ? 'Play · Lossless MOV below' : 'Play';
+        setState('Play');
         if (film.mov) {
           var a = document.createElement('a');
-          a.href = film.mov; a.textContent = 'Download lossless (MOV, 24-bit)';
+          a.href = film.mov; a.textContent = 'Lossless MOV, 24-bit';
           a.setAttribute('download', '');
-          var facts = document.querySelector('.facts');
-          var span = document.createElement('span'); span.appendChild(a); facts.appendChild(span);
+          var span = document.createElement('span'); span.appendChild(a);
+          document.getElementById('facts').appendChild(span);
         }
       }
     })

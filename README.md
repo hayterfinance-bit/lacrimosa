@@ -1,6 +1,6 @@
-# HAYTERWAVE — LACRIMOSA · screening
+# Hayterwave — Lacrimosa · screening
 
-The screening page for **HAYTERWAVE — LACRIMOSA (QUAM OLIM)**: Mozart's Lacrimosa
+The screening page for **Hayterwave — Lacrimosa (Quam Olim)**: Mozart's Lacrimosa
 reimagined as tech house at 128 BPM, a gothic cathedral built around the music.
 
 Live at https://hayterfinance-bit.github.io/lacrimosa/ — unlisted (noindex, robots
