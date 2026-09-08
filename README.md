@@ -37,6 +37,15 @@ goes on the release, never in the tree. The page's own assets (`og_lacrimosa.jpg
 The browser file should be H.264 with FLAC audio in MP4 (Chrome, Firefox and
 Safari play it); the download should be H.264 with 24-bit PCM in MOV.
 
+## Measured block
+
+The figures under "Measured" come from the master's spec sheet. When the
+master changes, regenerate the rows and push:
+
+```
+python measured.py ../MASTER_SPEC.json
+```
+
 ## Social card
 
 `assets/og_lacrimosa.jpg` is 1200 × 630 and is referenced with absolute URLs in the
